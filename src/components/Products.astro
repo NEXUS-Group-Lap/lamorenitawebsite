@@ -1,0 +1,89 @@
+---
+import Icon from './Icon.astro';
+
+const categories = [
+  { icon: 'bag', label: 'Abarrotes latinos' },
+  { icon: 'store', label: 'Productos centroamericanos' },
+  { icon: 'corn', label: 'Tortillas de maíz' },
+  { icon: 'cup', label: 'Bebidas y refrigerados' },
+  { icon: 'wind', label: 'Limpieza y hogar' },
+  { icon: 'droplet', label: 'Higiene personal' },
+];
+---
+<section class="section bg-gray" aria-labelledby="categories-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Pulpería</span>
+      <h2 id="categories-title">Productos para tu hogar</h2>
+      <p>Encuentra productos centroamericanos, abarrotes latinos, refrigerados, bebidas, snacks, limpieza, higiene personal y artículos de uso diario.</p>
+    </div>
+    <div class="products-layout">
+      <div class="products-img reveal reveal-delay-1">
+        <!-- Imagen temporal de Pexels: reemplazar con foto real de los pasillos -->
+        <img
+          src="https://images.pexels.com/photos/21582447/pexels-photo-21582447.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Pasillo de snacks y productos hispanos"
+          loading="lazy"
+        />
+      </div>
+      <div class="categories-grid reveal reveal-delay-2">
+        {categories.map(c => (
+          <div class="category-card">
+            <div class="cat-icon"><Icon name={c.icon} size={26} /></div>
+            {c.label}
+          </div>
+        ))}
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:32px;" class="reveal">
+      <a href="https://www.google.com/maps/place/Pulperia+La+Morenita/@26.666742,-81.9147759,17z" target="_blank" rel="noopener" class="btn btn-primary"><Icon name="map-pin" size={18} /> Visítanos para ver disponibilidad</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .products-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 900px) {
+    .products-layout { grid-template-columns: 0.9fr 1.4fr; gap: 32px; align-items: stretch; }
+  }
+
+  .products-img {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    min-height: 220px;
+  }
+  .products-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  @media (min-width: 600px) { .categories-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+
+  .category-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 20px 14px;
+    text-align: center;
+    font-weight: 600; font-size: 0.9rem; color: var(--text-dark);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-smooth);
+    cursor: default;
+  }
+  .category-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); color: var(--primary); }
+  .category-card .cat-icon {
+    display: flex; align-items: center; justify-content: center;
+    color: var(--primary);
+    margin: 0 auto 8px;
+  }
+</style>

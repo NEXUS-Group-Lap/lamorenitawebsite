@@ -1,0 +1,152 @@
+---
+---
+<section class="section bg-cream" aria-labelledby="menu-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 id="menu-title">Menú destacado</h2>
+      <p>Los precios y disponibilidad pueden cambiar. Visítanos o escríbenos por WhatsApp para confirmar.</p>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <div class="menu-tabs" id="menuTabs" role="tablist">
+        <button class="menu-tab active" data-tab="entradas" role="tab" aria-selected="true">Entradas</button>
+        <button class="menu-tab" data-tab="colombianos" role="tab" aria-selected="false">Antojitos colombianos</button>
+        <button class="menu-tab" data-tab="hondurenos" role="tab" aria-selected="false">Antojitos hondureños</button>
+        <button class="menu-tab" data-tab="platos" role="tab" aria-selected="false">Platos fuertes</button>
+        <button class="menu-tab" data-tab="tacos" role="tab" aria-selected="false">Tacos mexicanos</button>
+        <button class="menu-tab" data-tab="especial" role="tab" aria-selected="false">Especial semanal</button>
+      </div>
+      <div class="menu-content" id="menuContent" role="tabpanel"></div>
+      <p class="menu-note">Los precios y disponibilidad pueden cambiar sin previo aviso.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .menu-tabs {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 28px; justify-content: center;
+  }
+  .menu-tab {
+    padding: 10px 20px; border-radius: 50px;
+    font-weight: 600; font-size: 0.85rem;
+    cursor: pointer; transition: all var(--transition-fast);
+    background: var(--white);
+    border: 1.5px solid var(--gray-medium);
+    color: var(--text-body);
+  }
+  .menu-tab:hover { border-color: var(--primary); color: var(--primary); }
+  .menu-tab.active { background: var(--primary); color: var(--white); border-color: var(--primary); box-shadow: var(--shadow-primary); }
+
+  .menu-content {
+    background: var(--white); border-radius: var(--radius-lg);
+    padding: 8px; box-shadow: var(--shadow-sm);
+    max-width: 700px; margin: 0 auto;
+  }
+  :global(.menu-item) {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--gray-light);
+    transition: background var(--transition-fast);
+    border-radius: var(--radius-xs);
+  }
+  :global(.menu-item:last-child) { border-bottom: none; }
+  :global(.menu-item:hover) { background: #fafbff; }
+  :global(.menu-item-name) { font-weight: 500; color: var(--text-dark); }
+  :global(.menu-item-price) { font-weight: 700; color: var(--dark-blue); font-family: 'DM Sans', sans-serif; }
+
+  .menu-note { text-align: center; margin-top: 16px; font-size: 0.85rem; color: var(--text-muted); }
+</style>
+
+<script>
+  const menuData: Record<string, { name: string; price: string }[]> = {
+    entradas: [
+      { name: "Papas fritas", price: "$6.00" },
+      { name: "Nachos a La Morenita", price: "$12.99" },
+      { name: "Alitas de pollo", price: "$13.99" },
+      { name: "Camarones fritos", price: "$12.99" },
+      { name: "Deditos de pollo", price: "$9.99" },
+      { name: "Chicharrones fritos", price: "$12.00" },
+      { name: "Chorizo", price: "$6.00" },
+    ],
+    colombianos: [
+      { name: "Empanadas", price: "$2.50" },
+      { name: "Arepa con huevo", price: "$5.00" },
+      { name: "Caribañola", price: "$3.00" },
+      { name: "Salchipapa", price: "$13.00" },
+      { name: "Perro caliente", price: "$12.00" },
+      { name: "Chicharrón", price: "$12.00" },
+      { name: "Chorizo", price: "$4.00" },
+      { name: "Salchipapa La Morenita 2p", price: "$20.00" },
+      { name: "Salchipapa La Morenita 4p", price: "$35.00" },
+    ],
+    hondurenos: [
+      { name: "Tajadas con queso", price: "$9.99" },
+      { name: "Tajadas con carne molida", price: "$12.99" },
+      { name: "Pastelitos", price: "$11.99" },
+      { name: "Pollo Chuco", price: "$18.00" },
+      { name: "Burritas", price: "$9.00" },
+      { name: "Chuleta con tajada", price: "$16.99" },
+      { name: "Desayuno La Morenita", price: "$15.99" },
+      { name: "Cena La Morenita", price: "$16.99" },
+      { name: "Enchiladas", price: "$9.99" },
+      { name: "Pupusas", price: "$3.50" },
+      { name: "Zambos preparados", price: "$10.00" },
+      { name: "Tacos dorados", price: "$12.99" },
+      { name: "Baleadas sencillas", price: "$4.00" },
+      { name: "Baleadas con huevo", price: "$5.00" },
+      { name: "Baleadas con pollo", price: "$6.00" },
+      { name: "Baleadas con carne", price: "$7.00" },
+    ],
+    platos: [
+      { name: "Carne asada con 2 acompañantes", price: "$18.99" },
+      { name: "Pescado frito con 2 acompañantes", price: "$24.99" },
+      { name: "Pechuga asada con 2 acompañantes", price: "$16.99" },
+      { name: "Parrillada La Morenita", price: "$28.99" },
+      { name: "Hamburguesa con papas fritas", price: "$16.99" },
+      { name: "Camarones fritos con papas", price: "$18.99" },
+      { name: "Quesadilla", price: "$13.99" },
+      { name: "Tortas mexicanas", price: "$13.99" },
+    ],
+    tacos: [
+      { name: "Taco de Asada", price: "$3.00" },
+      { name: "Taco de Pollo", price: "$3.00" },
+      { name: "Taco de Carnitas", price: "$3.50" },
+      { name: "Taco de Pastor", price: "$3.75" },
+      { name: "Taco de Tripa", price: "$4.25" },
+    ],
+    especial: [
+      { name: "Lunes: Enchiladas, arroz y frijoles", price: "$13.99" },
+      { name: "Martes: Cerdo encebollada, coditos", price: "$13.99" },
+      { name: "Miércoles: Espagueti roja y camarones", price: "$13.99" },
+      { name: "Jueves: Fajitas de pollo, arroz, frijoles", price: "$13.99" },
+      { name: "Viernes: Filete de pescado, ensalada, arroz", price: "$13.99" },
+      { name: "Sopa del día", price: "$9.99" },
+    ],
+  };
+
+  const menuContent = document.getElementById('menuContent');
+  const tabs = document.querySelectorAll('.menu-tab');
+
+  function renderMenu(category: string) {
+    const items = menuData[category] || [];
+    if (menuContent) {
+      menuContent.innerHTML = items.map(item =>
+        `<div class="menu-item">
+          <span class="menu-item-name">${item.name}</span>
+          <span class="menu-item-price">${item.price}</span>
+        </div>`
+      ).join('');
+    }
+  }
+
+  renderMenu('entradas');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      renderMenu((tab as HTMLElement).dataset.tab || '');
+    });
+  });
+</script>

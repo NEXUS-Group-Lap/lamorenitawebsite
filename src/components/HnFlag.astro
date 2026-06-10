@@ -1,0 +1,37 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+const star = '0,-2 0.473,-0.62 1.9,-0.62 0.76,0.24 1.17,1.62 0,0.77 -1.17,1.62 -0.76,0.24 -1.9,-0.62 -0.473,-0.62';
+const positions: [number, number][] = [
+  [30, 20],
+  [21, 15.5],
+  [39, 15.5],
+  [21, 24.5],
+  [39, 24.5],
+];
+---
+
+<svg
+  class={`hn-flag ${className}`}
+  viewBox="0 0 60 40"
+  role="img"
+  aria-label="Bandera de Honduras"
+>
+  <rect width="60" height="13.34" y="0" fill="#0073cf" />
+  <rect width="60" height="13.33" y="13.34" fill="#ffffff" />
+  <rect width="60" height="13.33" y="26.67" fill="#0073cf" />
+  {positions.map(([x, y]) => (
+    <polygon points={star} fill="#0073cf" transform={`translate(${x} ${y})`} />
+  ))}
+</svg>
+
+<style>
+  .hn-flag {
+    display: block;
+    flex-shrink: 0;
+  }
+</style>

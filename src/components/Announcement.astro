@@ -1,0 +1,60 @@
+---
+import Icon from './Icon.astro';
+---
+<div class="announcement" role="status">
+  <div class="container announcement-inner">
+    <span class="announcement-icon"><Icon name="package" size={18} /></span>
+    <p class="announcement-text">
+      <strong>Próximamente en Uber Eats y DoorDash</strong> — estén atentos
+      <span class="announcement-en">Coming soon to Uber Eats and DoorDash — stay tuned</span>
+    </p>
+  </div>
+</div>
+
+<style>
+  .announcement {
+    margin-top: var(--header-height);
+    background: linear-gradient(90deg, var(--accent), var(--gold-dark));
+    color: var(--white);
+  }
+
+  .announcement-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 10px 24px;
+  }
+
+  .announcement-icon {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .announcement-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .announcement-en {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    font-style: italic;
+    opacity: 0.85;
+  }
+
+  @media (min-width: 640px) {
+    .announcement-inner { flex-wrap: nowrap; gap: 14px; }
+    .announcement-text { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
+    .announcement-en {
+      display: inline;
+      border-left: 1px solid rgba(255,255,255,0.4);
+      padding-left: 10px;
+    }
+  }
+</style>

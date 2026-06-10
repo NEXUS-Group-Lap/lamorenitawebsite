@@ -1,0 +1,105 @@
+---
+import Icon from './Icon.astro';
+import HnFlag from './HnFlag.astro';
+
+const pillars = [
+  { icon: 'cart', label: 'Abarrotes', variant: '' },
+  { icon: 'utensils', label: 'Comida', variant: 'accent' },
+  { icon: 'send', label: 'Envíos', variant: 'gold' },
+  { icon: 'package', label: 'Paquetes', variant: '' },
+];
+---
+<section class="section" aria-labelledby="about-title">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-img-wrap">
+          <!-- Imagen temporal de Pexels: reemplazar con foto real de la familia/comunidad -->
+          <img
+            class="about-img"
+            src="https://images.pexels.com/photos/8158054/pexels-photo-8158054.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="Familia latina en la comunidad de North Fort Myers"
+            loading="lazy"
+          />
+          <div class="about-flag"><HnFlag /></div>
+        </div>
+        <div class="about-tiles" aria-hidden="true">
+          {pillars.map(p => (
+            <div class="about-tile">
+              <div class={`icon-circle ${p.variant}`}><Icon name={p.icon} size={22} /></div>
+              <span>{p.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="about-content reveal reveal-delay-1">
+        <span class="eyebrow">Nuestra historia</span>
+        <h2 id="about-title">Sobre La Morenita</h2>
+        <p>Pulpería La Morenita es un negocio local de una mujer hondureña en North Fort Myers. Servimos a la comunidad latina con productos centroamericanos, comida preparada, tortillas de maíz, abarrotes, envíos de dinero y envío de paquetes a otros países.</p>
+        <p>Hablamos español e inglés para atender mejor a nuestra comunidad.</p>
+        <p class="about-english">Pulpería La Morenita is a Honduran woman-owned local business in North Fort Myers. We serve the Latino community with Central American groceries, prepared food, corn tortillas, money transfers, and package shipping. Spanish and English are spoken.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 768px) { .about-grid { grid-template-columns: 1fr 1fr; gap: 60px; } }
+
+  .about-visual {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    background: var(--white);
+  }
+
+  .about-img-wrap {
+    position: relative;
+    aspect-ratio: 16/10;
+  }
+
+  .about-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-tiles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--gray-light);
+    padding: 1px;
+  }
+
+  .about-tile {
+    background: var(--white);
+    padding: 16px 8px;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    font-weight: 600; font-size: 0.78rem; color: var(--navy);
+    font-family: 'DM Sans', sans-serif;
+    text-align: center;
+  }
+  .about-tile .icon-circle {
+    width: 40px; height: 40px;
+  }
+
+  .about-flag {
+    position: absolute; top: 16px; right: 16px;
+    width: 48px; height: 32px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 2;
+  }
+
+  .about-content h2 { margin-bottom: 16px; }
+  .about-content p { margin-bottom: 14px; color: var(--text-body); line-height: 1.7; }
+  .about-english { font-style: italic; color: var(--text-muted); font-size: 0.9rem; margin-top: 8px; }
+</style>

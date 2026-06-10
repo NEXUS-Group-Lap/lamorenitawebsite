@@ -1,0 +1,57 @@
+---
+import Icon from './Icon.astro';
+---
+<section class="section" id="comida" aria-labelledby="food-title">
+  <div class="container">
+    <div class="food-grid">
+      <div class="food-content reveal">
+        <span class="eyebrow">Comida latina</span>
+        <h2 id="food-title">Comida latina toda la semana</h2>
+        <p>Además de productos de pulpería, también ofrecemos comida preparada, lonches, antojitos hondureños, antojitos colombianos, tacos mexicanos, platos fuertes, especiales de la semana y sopa del día.</p>
+        <div class="food-btns">
+          <a href="https://wa.me/12395609478" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><Icon name="whatsapp" size={18} /> Preguntar por WhatsApp</a>
+          <a href="https://www.google.com/maps/place/Pulperia+La+Morenita/@26.666742,-81.9147759,17z" target="_blank" rel="noopener" class="btn btn-outline btn-lg"><Icon name="map-pin" size={18} /> Cómo llegar</a>
+        </div>
+      </div>
+      <div class="food-img reveal reveal-delay-1">
+        <!-- Imagen temporal de Pexels: reemplazar con foto real de los platillos -->
+        <img
+          src="https://images.pexels.com/photos/29450673/pexels-photo-29450673.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Plato de comida latina recién preparada"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .food-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .food-grid { grid-template-columns: 1.1fr 0.9fr; gap: 48px; }
+  }
+
+  .food-content h2 { margin-bottom: 16px; }
+  .food-content p { color: var(--text-body); line-height: 1.7; margin-bottom: 24px; }
+
+  .food-btns {
+    display: flex; flex-wrap: wrap; gap: 12px;
+  }
+
+  .food-img {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    aspect-ratio: 4/3;
+  }
+  .food-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+</style>

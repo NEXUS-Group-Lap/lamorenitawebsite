@@ -1,0 +1,161 @@
+---
+import Icon from './Icon.astro';
+---
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="#" class="header-logo" aria-label="Pulpería La Morenita - Ir al inicio">
+      <div class="header-logo-icon"><Icon name="store" size={20} /></div>
+      <span class="header-logo-text">Pulpería La Morenita</span>
+    </a>
+
+    <nav class="header-nav" aria-label="Navegación principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#productos">Productos</a>
+      <a href="#comida">Comida</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#ubicacion">Ubicación</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="https://www.google.com/maps/place/Pulperia+La+Morenita/@26.666742,-81.9147759,17z" target="_blank" rel="noopener" class="btn btn-outline btn-sm"><Icon name="map-pin" size={16} /> Cómo llegar</a>
+      <a href="https://wa.me/12395609478" target="_blank" rel="noopener" class="btn btn-primary btn-sm"><Icon name="whatsapp" size={16} /> WhatsApp</a>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="#inicio" class="mobile-link">Inicio</a>
+  <a href="#productos" class="mobile-link">Productos</a>
+  <a href="#comida" class="mobile-link">Comida</a>
+  <a href="#servicios" class="mobile-link">Servicios</a>
+  <a href="#ubicacion" class="mobile-link">Ubicación</a>
+  <a href="https://www.google.com/maps/place/Pulperia+La+Morenita/@26.666742,-81.9147759,17z" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:16px;"><Icon name="map-pin" size={18} /> Cómo llegar</a>
+  <a href="https://wa.me/12395609478" target="_blank" rel="noopener" class="btn btn-primary"><Icon name="whatsapp" size={18} /> WhatsApp</a>
+</div>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    transition: all var(--transition-smooth);
+    height: var(--header-height);
+  }
+  .header.scrolled { box-shadow: var(--shadow-sm); background: rgba(255,255,255,0.96); }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    gap: 20px;
+  }
+
+  .header-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+  .header-logo-icon {
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; color: var(--white); font-weight: 700;
+    box-shadow: 0 4px 12px rgba(17,141,255,0.3);
+    flex-shrink: 0;
+  }
+
+  .header-logo-text {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700; font-size: 1rem; color: var(--navy);
+    display: none;
+  }
+  @media (min-width: 480px) { .header-logo-text { display: block; } }
+
+  .header-nav { display: none; align-items: center; gap: 28px; }
+  @media (min-width: 1024px) { .header-nav { display: flex; } }
+
+  .header-nav a {
+    font-weight: 500; font-size: 0.9rem; color: var(--text-body);
+    transition: color var(--transition-fast);
+    position: relative;
+  }
+  .header-nav a:hover { color: var(--primary); }
+  .header-nav a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 2px; background: var(--primary);
+    border-radius: 2px; transition: width var(--transition-smooth);
+  }
+  .header-nav a:hover::after { width: 100%; }
+
+  .header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .header-actions .btn-outline { display: none; }
+  @media (min-width: 480px) { .header-actions .btn-outline { display: inline-flex; } }
+
+  .mobile-menu-toggle {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px;
+    background: transparent; border: none; cursor: pointer;
+    flex-direction: column; gap: 5px; padding: 8px; z-index: 1001;
+  }
+  @media (min-width: 1024px) { .mobile-menu-toggle { display: none; } }
+
+  .mobile-menu-toggle span {
+    display: block; width: 22px; height: 2px;
+    background: var(--navy); border-radius: 2px;
+    transition: all var(--transition-smooth);
+  }
+  .mobile-menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
+  .mobile-menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  .mobile-menu {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--white); z-index: 999;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 32px;
+    opacity: 0; pointer-events: none;
+    transition: opacity var(--transition-smooth);
+  }
+  .mobile-menu.active { opacity: 1; pointer-events: auto; }
+
+  .mobile-menu a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.3rem; font-weight: 600; color: var(--navy);
+    transition: color var(--transition-fast);
+  }
+  .mobile-menu a:hover { color: var(--primary); }
+</style>
+
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header?.classList.toggle('scrolled', window.pageYOffset > 50);
+  }, { passive: true });
+
+  const toggle = document.getElementById('mobileMenuToggle');
+  const menu = document.getElementById('mobileMenu');
+  let open = false;
+
+  function toggleMenu() {
+    open = !open;
+    toggle?.classList.toggle('active', open);
+    menu?.classList.toggle('active', open);
+    toggle?.setAttribute('aria-expanded', String(open));
+    menu?.setAttribute('aria-hidden', String(!open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  toggle?.addEventListener('click', toggleMenu);
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => { if (open) toggleMenu(); });
+  });
+</script>

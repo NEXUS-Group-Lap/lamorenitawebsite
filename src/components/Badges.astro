@@ -1,0 +1,65 @@
+---
+import Icon from './Icon.astro';
+import HnFlag from './HnFlag.astro';
+---
+<section class="section" aria-label="Características principales">
+  <div class="container">
+    <div class="badges-grid reveal">
+      <div class="badge-card">
+        <div class="badge-icon"><Icon name="clock" size={26} /></div>
+        <div class="badge-title">7 AM – 9 PM</div>
+        <div class="badge-subtitle">Open Daily</div>
+      </div>
+      <div class="badge-card reveal-delay-1">
+        <div class="badge-icon"><Icon name="languages" size={26} /></div>
+        <div class="badge-title">Español + English</div>
+        <div class="badge-subtitle">Bilingual Service</div>
+      </div>
+      <div class="badge-card reveal-delay-2">
+        <div class="badge-icon badge-flag"><HnFlag /></div>
+        <div class="badge-title">Honduran-Owned</div>
+        <div class="badge-subtitle">Woman-Owned Local Business</div>
+      </div>
+      <div class="badge-card reveal-delay-3">
+        <div class="badge-icon"><Icon name="send" size={26} /></div>
+        <div class="badge-title">Money Transfers</div>
+        <div class="badge-subtitle">To Latin America</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .badges-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  @media (min-width: 768px) {
+    .badges-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  }
+
+  .badge-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 24px 18px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-smooth);
+    border: 1px solid transparent;
+  }
+  .badge-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: rgba(17,141,255,0.15); }
+  .badge-card .badge-icon {
+    display: flex; align-items: center; justify-content: center;
+    color: var(--primary);
+    margin: 0 auto 12px;
+  }
+  .badge-card .badge-icon.badge-flag {
+    width: 36px; height: 24px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.06);
+  }
+  .badge-card .badge-title { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--navy); margin-bottom: 4px; }
+  .badge-card .badge-subtitle { font-size: 0.85rem; color: var(--text-muted); }
+</style>

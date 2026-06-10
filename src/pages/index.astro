@@ -1,17 +1,62 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Announcement from '../components/Announcement.astro';
+import Hero from '../components/Hero.astro';
+import Badges from '../components/Badges.astro';
+import Services from '../components/Services.astro';
+import About from '../components/About.astro';
+import Products from '../components/Products.astro';
+import Food from '../components/Food.astro';
+import Menu from '../components/Menu.astro';
+import Community from '../components/Community.astro';
+import Gallery from '../components/Gallery.astro';
+import Location from '../components/Location.astro';
+import Social from '../components/Social.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <Header />
+  <Announcement />
+  <main id="inicio">
+    <Hero />
+    <Badges />
+    <Services />
+    <About />
+    <Products />
+    <Food />
+    <Menu />
+    <Community />
+    <Gallery />
+    <Location />
+    <Social />
+    <CTA />
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  const revealElements = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: '0px 0px -60px 0px', threshold: 0.15 }
+  );
+  revealElements.forEach(el => observer.observe(el));
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal').forEach(el => {
+      (el as HTMLElement).style.opacity = '1';
+      (el as HTMLElement).style.transform = 'none';
+      (el as HTMLElement).style.transition = 'none';
+    });
+  }
+</script>

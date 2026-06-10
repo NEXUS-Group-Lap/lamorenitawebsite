@@ -1,0 +1,77 @@
+---
+import Icon from './Icon.astro';
+---
+<section class="section" id="servicios" aria-labelledby="community-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Servicios</span>
+      <h2 id="community-title">Servicios para nuestra comunidad</h2>
+      <p>En Pulpería La Morenita también ofrecemos servicios para nuestra comunidad, incluyendo envíos de dinero a Latinoamérica y envío de paquetes a otros países.</p>
+    </div>
+    <div class="services-grid reveal reveal-delay-1">
+      <div class="service-card">
+        <div class="service-icon"><Icon name="send" /></div>
+        <h3>Envíos de dinero a Latinoamérica</h3>
+        <p>Servicio rápido y seguro para enviar dinero a tu familia en Latinoamérica.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><Icon name="package" /></div>
+        <h3>Paquetes internacionales</h3>
+        <p>Envío de paquetes a otros países con atención personalizada.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><Icon name="languages" /></div>
+        <h3>Atención en español</h3>
+        <p>Te atendemos en tu idioma para que te sientas en confianza.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><Icon name="smile" /></div>
+        <h3>English spoken</h3>
+        <p>We also serve English-speaking customers with the same warmth.</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:28px;" class="reveal">
+      <a href="tel:+12395609478" class="btn btn-primary"><Icon name="phone" size={18} /> Llámanos para más detalles</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  @media (min-width: 600px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(4, 1fr); } }
+
+  .service-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 32px 24px;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-smooth);
+    border: 1px solid transparent;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform var(--transition-smooth);
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(17,141,255,0.1); }
+  .service-card .service-icon {
+    width: 52px; height: 52px;
+    background: rgba(17,141,255,0.08);
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 18px;
+    transition: all var(--transition-smooth);
+  }
+  .service-card:hover .service-icon { background: var(--primary); color: var(--white); transform: scale(1.05); }
+  .service-card h3 { margin-bottom: 10px; font-size: 1.2rem; }
+  .service-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+</style>

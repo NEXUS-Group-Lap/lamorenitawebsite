@@ -1,0 +1,105 @@
+---
+import Icon from './Icon.astro';
+
+const reasons = [
+  {
+    icon: 'heart',
+    variant: 'accent',
+    title: 'Ambiente familiar',
+    text: 'Te atendemos como parte de la familia, con calidez y confianza hondureña en cada visita.',
+  },
+  {
+    icon: 'check-circle',
+    variant: '',
+    title: 'Productos siempre frescos',
+    text: 'Reabastecemos constantemente para que siempre encuentres lo que necesitas.',
+  },
+  {
+    icon: 'languages',
+    variant: 'gold',
+    title: 'Atención bilingüe',
+    text: 'Hablamos español e inglés para que te sientas cómodo desde que entras.',
+  },
+  {
+    icon: 'navigation',
+    variant: '',
+    title: 'Fácil de encontrar',
+    text: 'Ubicados en Pondella Rd, con acceso y estacionamiento rápido para tu visita.',
+  },
+  {
+    icon: 'users',
+    variant: 'accent',
+    title: 'Apoyo a la comunidad',
+    text: 'Un negocio local hondureño, dirigido por una mujer, comprometido con North Fort Myers.',
+  },
+  {
+    icon: 'star',
+    variant: 'gold',
+    title: 'La confianza de siempre',
+    text: 'Clientes que regresan cada semana porque saben que aquí encuentran lo que buscan.',
+  },
+];
+---
+<section class="section bg-gray" aria-labelledby="why-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Por qué visitarnos</span>
+      <h2 id="why-title">La Morenita es como estar en casa</h2>
+      <p>Más que una tienda: un espacio donde la comunidad latina de North Fort Myers encuentra lo que necesita y se siente bienvenida.</p>
+    </div>
+    <div class="why-banner reveal">
+      <!-- Imagen temporal de Pexels: reemplazar con foto real de la fachada -->
+      <img
+        src="https://images.pexels.com/photos/6674381/pexels-photo-6674381.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        alt="Fachada de una tienda local en el vecindario"
+        loading="lazy"
+      />
+    </div>
+    <div class="why-grid reveal reveal-delay-1">
+      {reasons.map(r => (
+        <div class="why-card">
+          <div class={`icon-circle ${r.variant}`}><Icon name={r.icon} /></div>
+          <h3>{r.title}</h3>
+          <p>{r.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-banner {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    aspect-ratio: 21/9;
+    margin-bottom: 32px;
+  }
+  .why-banner img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  @media (max-width: 600px) { .why-banner { aspect-ratio: 16/10; } }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  @media (min-width: 600px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .why-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .why-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-smooth);
+    border: 1px solid transparent;
+  }
+  .why-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(17,141,255,0.1); }
+  .why-card .icon-circle { margin-bottom: 16px; }
+  .why-card h3 { margin-bottom: 8px; font-size: 1.15rem; }
+  .why-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+</style>

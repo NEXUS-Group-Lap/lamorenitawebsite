@@ -1,6 +1,8 @@
 ---
 import Icon from './Icon.astro';
 
+const productsImg = `${import.meta.env.BASE_URL}interior.3.jpg`;
+
 const categories = [
   { icon: 'bag', label: 'Abarrotes latinos' },
   { icon: 'store', label: 'Productos centroamericanos' },
@@ -19,10 +21,9 @@ const categories = [
     </div>
     <div class="products-layout">
       <div class="products-img reveal reveal-delay-1">
-        <!-- Imagen temporal de Pexels: reemplazar con foto real de los pasillos -->
         <img
-          src="https://images.pexels.com/photos/21582447/pexels-photo-21582447.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Pasillo de snacks y productos hispanos"
+          src={productsImg}
+          alt="Estante de productos de limpieza e higiene personal en Pulpería La Morenita"
           loading="lazy"
         />
       </div>
@@ -36,7 +37,7 @@ const categories = [
       </div>
     </div>
     <div style="text-align:center; margin-top:32px;" class="reveal">
-      <a href="https://www.google.com/maps/place/Pulperia+La+Morenita/@26.666742,-81.9147759,17z" target="_blank" rel="noopener" class="btn btn-primary"><Icon name="map-pin" size={18} /> Visítanos para ver disponibilidad</a>
+      <a href="https://maps.app.goo.gl/MEhpMWyCHFsVHLnS9" target="_blank" rel="noopener" class="btn btn-primary"><Icon name="map-pin" size={18} /> Visítanos para ver disponibilidad</a>
     </div>
   </div>
 </section>

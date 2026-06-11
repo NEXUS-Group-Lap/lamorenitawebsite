@@ -1,6 +1,8 @@
 ---
 import Icon from './Icon.astro';
 
+const bannerImg = `${import.meta.env.BASE_URL}interior2.jpg`;
+
 const reasons = [
   {
     icon: 'heart',
@@ -48,10 +50,9 @@ const reasons = [
       <p>Más que una tienda: un espacio donde la comunidad latina de North Fort Myers encuentra lo que necesita y se siente bienvenida.</p>
     </div>
     <div class="why-banner reveal">
-      <!-- Imagen temporal de Pexels: reemplazar con foto real de la fachada -->
       <img
-        src="https://images.pexels.com/photos/6674381/pexels-photo-6674381.jpeg?auto=compress&cs=tinysrgb&w=1200"
-        alt="Fachada de una tienda local en el vecindario"
+        src={bannerImg}
+        alt="Pasillo de productos dentro de Pulpería La Morenita"
         loading="lazy"
       />
     </div>

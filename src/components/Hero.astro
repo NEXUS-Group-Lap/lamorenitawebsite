@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import HnFlag from './HnFlag.astro';
+const heroImg = `${import.meta.env.BASE_URL}interior5.jpg`;
 ---
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-bg-pattern"></div>
@@ -18,7 +19,7 @@ import HnFlag from './HnFlag.astro';
       </div>
 
       <div class="hero-btns">
-        <a href="https://www.google.com/maps/place/Pulperia+La+Morenita/@26.666742,-81.9147759,17z" target="_blank" rel="noopener" class="btn btn-white btn-lg"><Icon name="map-pin" size={18} /> Cómo llegar</a>
+        <a href="https://maps.app.goo.gl/MEhpMWyCHFsVHLnS9" target="_blank" rel="noopener" class="btn btn-white btn-lg"><Icon name="map-pin" size={18} /> Cómo llegar</a>
         <a href="https://wa.me/12395609478" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><Icon name="whatsapp" size={18} /> WhatsApp</a>
         <a href="tel:+12395609478" class="btn btn-outline-white btn-lg"><Icon name="phone" size={18} /> Llamar ahora</a>
       </div>
@@ -27,11 +28,10 @@ import HnFlag from './HnFlag.astro';
     </div>
 
     <aside class="hero-card">
-      <!-- Imagen temporal de Pexels: reemplazar con foto real de la tienda -->
       <img
         class="hero-card-img"
-        src="https://images.pexels.com/photos/20489330/pexels-photo-20489330.jpeg?auto=compress&cs=tinysrgb&w=900"
-        alt="Estantes de una pulpería con productos variados"
+        src={heroImg}
+        alt="Refrigerador de bebidas dentro de Pulpería La Morenita"
         loading="eager"
       />
       <div class="hero-card-overlay">

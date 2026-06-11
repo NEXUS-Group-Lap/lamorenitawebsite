@@ -2,6 +2,8 @@
 import Icon from './Icon.astro';
 import HnFlag from './HnFlag.astro';
 
+const aboutImg = `${import.meta.env.BASE_URL}interior1.jpg`;
+
 const pillars = [
   { icon: 'cart', label: 'Abarrotes', variant: '' },
   { icon: 'utensils', label: 'Comida', variant: 'accent' },
@@ -14,11 +16,10 @@ const pillars = [
     <div class="about-grid">
       <div class="about-visual reveal">
         <div class="about-img-wrap">
-          <!-- Imagen temporal de Pexels: reemplazar con foto real de la familia/comunidad -->
           <img
             class="about-img"
-            src="https://images.pexels.com/photos/8158054/pexels-photo-8158054.jpeg?auto=compress&cs=tinysrgb&w=800"
-            alt="Familia latina en la comunidad de North Fort Myers"
+            src={aboutImg}
+            alt="Pasillos de Pulpería La Morenita con productos centroamericanos"
             loading="lazy"
           />
           <div class="about-flag"><HnFlag /></div>

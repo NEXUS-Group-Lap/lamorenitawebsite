@@ -3,6 +3,6 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://nexus-group-lap.github.io',
-  base: '/lamorenitawebsite/',
+  site: process.env.SITE_URL ?? 'https://nexus-group-lap.github.io',
+  base: process.env.BASE_PATH ?? '/lamorenitawebsite/',
 });

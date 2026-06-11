@@ -1,8 +1,10 @@
 ---
 import Icon from './Icon.astro';
+const mascotImg = `${import.meta.env.BASE_URL}logo2.png`;
 ---
 <footer class="footer" role="contentinfo">
   <div class="container">
+    <img class="footer-mascot" src={mascotImg} alt="" loading="lazy" />
     <h4>Pulpería La Morenita</h4>
     <p>Productos centroamericanos • Comida preparada • Envíos de dinero • Paquetes</p>
     <p class="footer-line"><Icon name="map-pin" size={16} /> 895 Pondella Rd, North Fort Myers, FL 33903</p>
@@ -33,6 +35,14 @@ import Icon from './Icon.astro';
     text-align: center;
   }
   @media (min-width: 768px) { .footer { padding: 50px 0; } }
+
+  .footer-mascot {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto 12px;
+    filter: drop-shadow(0 10px 22px rgba(0,0,0,0.3));
+  }
 
   .footer h4 { color: var(--white); margin-bottom: 8px; }
   .footer p { margin-bottom: 6px; font-size: 0.9rem; }

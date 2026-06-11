@@ -6,7 +6,6 @@ import Icon from './Icon.astro';
     <span class="announcement-icon"><Icon name="package" size={18} /></span>
     <p class="announcement-text">
       <strong>Próximamente en Uber Eats y DoorDash</strong> — estén atentos
-      <span class="announcement-en">Coming soon to Uber Eats and DoorDash — stay tuned</span>
     </p>
   </div>
 </div>
@@ -40,21 +39,8 @@ import Icon from './Icon.astro';
     line-height: 1.5;
   }
 
-  .announcement-en {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 500;
-    font-style: italic;
-    opacity: 0.85;
-  }
-
   @media (min-width: 640px) {
     .announcement-inner { flex-wrap: nowrap; gap: 14px; }
-    .announcement-text { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
-    .announcement-en {
-      display: inline;
-      border-left: 1px solid rgba(255,255,255,0.4);
-      padding-left: 10px;
-    }
+    .announcement-text { font-size: 0.9rem; }
   }
 </style>

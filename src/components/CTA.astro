@@ -1,13 +1,14 @@
 ---
 import Icon from './Icon.astro';
+const mascotImg = `${import.meta.env.BASE_URL}logo3.png`;
 ---
 <section class="cta-section" aria-labelledby="cta-title">
   <div class="container">
     <div class="reveal">
+      <img class="cta-mascot" src={mascotImg} alt="" loading="lazy" />
       <span class="eyebrow">Te esperamos</span>
       <h2 id="cta-title">Visítanos hoy</h2>
       <p>Estamos en North Fort Myers con productos centroamericanos, comida preparada, envíos de dinero y paquetes para nuestra comunidad. Abierto de 7:00 AM a 9:00 PM.</p>
-      <p class="cta-english">Visit us today — get directions, call us, or follow us on social media.</p>
       <div class="cta-btns">
         <a href="https://maps.app.goo.gl/MEhpMWyCHFsVHLnS9" target="_blank" rel="noopener" class="btn btn-white btn-lg"><Icon name="map-pin" size={18} /> Cómo llegar</a>
         <a href="https://wa.me/12395609478" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><Icon name="whatsapp" size={18} /> WhatsApp</a>
@@ -29,12 +30,15 @@ import Icon from './Icon.astro';
     background: radial-gradient(ellipse at center, rgba(17,141,255,0.2) 0%, transparent 60%);
   }
   .cta-section .container { position: relative; z-index: 1; }
-  .cta-section h2 { color: var(--white); margin-bottom: 16px; }
-  .cta-section p { color: rgba(255,255,255,0.85); max-width: 550px; margin: 0 auto 16px; font-size: 1.05rem; }
-  .cta-english {
-    font-style: italic; font-size: 0.9rem !important;
-    color: rgba(255,255,255,0.6) !important;
-    margin-bottom: 28px !important;
+  .cta-mascot {
+    width: 130px;
+    height: auto;
+    display: block;
+    margin: 0 auto 12px;
+    filter: drop-shadow(0 14px 28px rgba(0,0,0,0.35));
   }
+  @media (min-width: 768px) { .cta-mascot { width: 170px; } }
+  .cta-section h2 { color: var(--white); margin-bottom: 16px; }
+  .cta-section p { color: rgba(255,255,255,0.85); max-width: 550px; margin: 0 auto 24px; font-size: 1.05rem; }
   .cta-btns { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
 </style>

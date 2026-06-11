@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+const flagsImg = `${import.meta.env.BASE_URL}flags.png`;
 ---
 <section class="section" id="servicios" aria-labelledby="community-title">
   <div class="container">
@@ -7,6 +8,10 @@ import Icon from './Icon.astro';
       <span class="eyebrow">Servicios</span>
       <h2 id="community-title">Servicios para nuestra comunidad</h2>
       <p>En Pulpería La Morenita también ofrecemos servicios para nuestra comunidad, incluyendo envíos de dinero a Latinoamérica y envío de paquetes a otros países.</p>
+    </div>
+    <div class="flags-banner reveal">
+      <p class="flags-caption">Enviamos dinero y paquetes a toda Latinoamérica</p>
+      <img src={flagsImg} alt="Banderas de países de Latinoamérica y Estados Unidos" loading="lazy" />
     </div>
     <div class="services-grid reveal reveal-delay-1">
       <div class="service-card">
@@ -26,8 +31,8 @@ import Icon from './Icon.astro';
       </div>
       <div class="service-card">
         <div class="service-icon"><Icon name="smile" /></div>
-        <h3>English spoken</h3>
-        <p>We also serve English-speaking customers with the same warmth.</p>
+        <h3>También hablamos inglés</h3>
+        <p>Atendemos con la misma calidez a los clientes que prefieren el inglés.</p>
       </div>
     </div>
     <div style="text-align:center; margin-top:28px;" class="reveal">
@@ -37,6 +42,25 @@ import Icon from './Icon.astro';
 </section>
 
 <style>
+  .flags-banner {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .flags-caption {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+  .flags-banner img {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
   .services-grid {
     display: grid;
     grid-template-columns: 1fr;

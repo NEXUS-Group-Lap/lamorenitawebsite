@@ -1,6 +1,5 @@
 ---
 import Icon from './Icon.astro';
-import HnFlag from './HnFlag.astro';
 const heroImg = `${import.meta.env.BASE_URL}front.png`;
 const heroBgImg = `${import.meta.env.BASE_URL}interior6.jpg`;
 const flagsImg = `${import.meta.env.BASE_URL}flags2division.png`;
@@ -9,10 +8,9 @@ const flagsImg = `${import.meta.env.BASE_URL}flags2division.png`;
   <div class="hero-bg-pattern"></div>
   <div class="container hero-grid">
     <div class="hero-content">
-      <div class="hero-badge"><HnFlag class="hero-badge-flag" /> Mujeres emprendedoras hondureñas</div>
       <h1 class="hero-title" id="hero-title">Pulpería<br />La Morenita</h1>
-      <p class="hero-subtitle">Productos, comida y servicios para la comunidad latina de North Fort Myers.</p>
-      <p class="hero-description">Encuentra productos centroamericanos, tortillas de maíz, comida preparada, envíos de dinero y envío de paquetes en un solo lugar.</p>
+      <p class="hero-subtitle">Productos latinos, comida preparada y servicios para tu familia en North Fort Myers.</p>
+      <p class="hero-description">Encuentra productos centroamericanos, tortillas de maíz, abarrotes, bebidas, comida latina, envíos de dinero y paquetes internacionales en un solo lugar.</p>
 
       <div class="hero-info">
         <span class="hero-info-item"><Icon name="clock" size={16} /> 7 AM – 9 PM</span>
@@ -107,25 +105,6 @@ const flagsImg = `${import.meta.env.BASE_URL}flags2division.png`;
   .hero-content {
     color: var(--white);
     max-width: 620px;
-  }
-
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 50px;
-    padding: 8px 18px 8px 10px;
-    font-size: 0.85rem; font-weight: 600;
-    margin-bottom: 24px;
-    animation: fadeInUp 0.8s ease forwards;
-    letter-spacing: -0.01em;
-  }
-  .hero-badge :global(.hero-badge-flag) {
-    width: 24px; height: 16px;
-    border-radius: 3px;
-    overflow: hidden;
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.3);
   }
 
   .hero-title {

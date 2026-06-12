@@ -12,9 +12,27 @@ import Icon from './Icon.astro';
 
 <style>
   .announcement {
+    position: relative;
+    overflow: hidden;
     margin-top: var(--header-height);
     background: linear-gradient(90deg, var(--accent), var(--gold-dark));
     color: var(--white);
+  }
+
+  .announcement::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    left: -60%;
+    width: 40%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    animation: announcement-shimmer 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes announcement-shimmer {
+    0% { left: -60%; }
+    100% { left: 120%; }
   }
 
   .announcement-inner {
@@ -30,6 +48,12 @@ import Icon from './Icon.astro';
   .announcement-icon {
     display: flex;
     flex-shrink: 0;
+    animation: announcement-bounce 1.6s ease-in-out infinite;
+  }
+
+  @keyframes announcement-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
   }
 
   .announcement-text {
